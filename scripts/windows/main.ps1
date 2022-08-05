@@ -1,3 +1,38 @@
+<#
+.SYNOPSIS
+    Executes the Image Transportation Tool for Windows.
+
+.DESCRIPTION
+    The Image Transportation Tool is a tool that uses a self-contained docker environment 
+    to create a local repository bound to local storage to transport images from one context
+    to another without relying on any external services. The tool should be executed on one machine
+    that has access to the target image in write mode. When the image is transferred to the local volume 
+    it can be mounted to the second machine. There the tool should be executed in read mode to move the image 
+    from the local repository the new machine's docker context.
+
+.PARAMETER Mode
+    READ or WRITE depending on the mode the tool should be executed in.
+
+.EXAMPLE
+     Invoke-Image
+
+.EXAMPLE
+     'Server1', 'Server2' | Get-MrAutoStoppedService
+
+.EXAMPLE
+     Get-MrAutoStoppedService -ComputerName 'Server1' -Credential (Get-Credential)
+
+.INPUTS
+    String
+
+.OUTPUTS
+    PSCustomObject
+
+.NOTES
+    Author:  Mike F Robbins
+    Website: http://mikefrobbins.com
+    Twitter: @mikefrobbins
+#>
 function Invoke-ImageTransportTool{
     [CmdletBinding()]
     function(
