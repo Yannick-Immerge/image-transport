@@ -1,6 +1,7 @@
 function Install-DockerVersion{
     # Check for portable docker installation
     if (-not (Test-Path ".\docker.version")){ Out-File -InputObject "version: none" -FilePath ".\docker.version" }
+    if (-not (Test-Path ".\lib")){ New-Item ".\lib" -ItemType Directory }
 
     # Establish installation
     $lastaction = "none"
