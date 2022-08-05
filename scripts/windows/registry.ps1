@@ -5,3 +5,12 @@ function Start-LocalRegistry {
 function Stop-LocalRegistry {
     docker container stop --name "local-registry"
 }
+
+function Push-ImageToLocal {
+    params(
+        [string]$SourcedImageName
+        [string]$TargetImageName
+    )
+    docker tag $SourcedImageName $TargetImageName
+    docker push ("localhost:5000/" + $TargetImageName)
+}
